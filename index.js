@@ -1,21 +1,21 @@
 const express=require("express");//express ko import krliya
 const path=require("path")
 const bodyParser = require("body-parser")
-
+const router=require("./UserRoutes");
 const app=express(); //call express
 const port=4000;
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.json());
+app.use("/api/v1",router)
 
 
 app.get("/",(req,res)=>{
-    //console.log(path.join(__dirname+"/index.html"));
-    res.sendFile(path.join(__dirname+"/index.html"));
-})
+   res.sendFile(path.join(__dirname+"/index.html"))
+});
 
-app.post("/api/v1/login",(req,res)=>{
-    res.send(`NAME: ${req.body.name} EMAIL: ${req.body.email}`);
-    console.log(req.body);
-})
+
+
+
 
 
 
